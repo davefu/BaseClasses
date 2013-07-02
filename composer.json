@@ -1,0 +1,20 @@
+{
+	"name": "Foowie/BaseClasses",
+	"type": "library",
+	"description": "Base classes for application based on Nette Framework",
+	"keywords": ["nette", "base"],
+	"license": ["BSD-3-Clause", "GPL-2.0", "GPL-3.0"],
+	"authors": [
+	{
+		"name": "Daniel Robenek"
+	}
+	],
+	"require": {
+		"nette/nette": "@dev"
+	},
+	"autoload": {
+		"psr-0": {
+			"Base": "src/"
+		}
+	}	
+}
