@@ -54,6 +54,7 @@ class TemplatableControl extends \Base\Control {
 					throw new \Nette\InvalidStateException("Template URL not assigned to control {$this->lookupPath('Nette\Application\IPresenter')}!");
 				}
 				$template->templatePath = $this->templateUrl;
+				$template->templateDir = dirname($file);
 				return;
 			}
 		}
