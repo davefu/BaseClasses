@@ -5,6 +5,6 @@ namespace Base;
 /**
  * @author Daniel Robenek <danrob@seznam.cz>
  */
-class ServiceException extends \ServiceException {
+class ServiceException extends \Exception {
 	
 }
