@@ -2,12 +2,21 @@
 
 namespace Base;
 
+use Nette\Forms\IFormRenderer;
+
 /**
  * @author Daniel Robenek <danrob@seznam.cz>
  */
-class Form extends \Nette\Application\UI\Form {
+abstract class Form extends \Nette\Application\UI\Form {
 
+	/** @var bool Transform errors into presenter flash messages? */
 	protected $transformErrors = true;
+
+	/** @var bool Were errors transformed? */
+	protected $errorsTransformed = false;
+
+	/** @var IFormRenderer */
+	protected $renderer;
 
 	public function __construct($parent = null, $name = null) {
 		parent::__construct($parent, $name);
@@ -16,7 +25,6 @@ class Form extends \Nette\Application\UI\Form {
 	}
 
 	protected function setup() {
-		
 	}
 
 	protected function attached($component) {
@@ -34,10 +42,33 @@ class Form extends \Nette\Application\UI\Form {
 		$this->transformErrors = $transformErrors;
 	}
 
+	/**
+	 * Sets form renderer.
+	 * @return self
+	 */
+	public function setRenderer(IFormRenderer $renderer) {
+		$this->renderer = $renderer;
+		return $this;
+	}
+
+
+	/**
+	 * Returns form renderer.
+	 * @return IFormRenderer
+	 */
+	public function getRenderer() {
+		if ($this->renderer === NULL) {
+			$this->renderer = new DefaultFormRenderer(!$this->transformErrors);
+		}
+		return $this->renderer;
+	}
+
+
 	public function transformErrors() {
-		if (!$this->hasErrors() || !$this->transformErrors)
+		if (!$this->hasErrors() || !$this->transformErrors || $this->errorsTransformed) {
 			return;
-		$this->transformErrors = false;
+		}
+		$this->errorsTransformed = true;
 		foreach ($this->getErrors() as $error) {
 			$this->presenter->flashMessage($error, 'error');
 		}
