@@ -7,7 +7,7 @@ use Nette\Forms\IFormRenderer;
 /**
  * @author Daniel Robenek <danrob@seznam.cz>
  */
-abstract class Form extends \Nette\Application\UI\Form {
+class Form extends \Nette\Application\UI\Form {
 
 	/** @var bool Transform errors into presenter flash messages? */
 	protected $transformErrors = true;
