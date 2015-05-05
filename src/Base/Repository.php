@@ -7,10 +7,10 @@ namespace Base;
  */
 abstract class Repository extends \Nette\Object {
 
-	/** @var \Nette\Database\Connection */
+	/** @var \Nette\Database\Context */
 	protected $conn;
 
-	function __construct(\Nette\Database\Connection $conn) {
+	function __construct(\Nette\Database\Context $conn) {
 		$this->conn = $conn;
 	}
 

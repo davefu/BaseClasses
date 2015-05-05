@@ -11,7 +11,7 @@ class TransactionManager extends \Nette\Object implements \Base\ITransactionMana
 	const TYPE_COMMIT = 1;
 	const TYPE_ROLLBACK = 2;
 
-	/** @var \Nette\Database\Connection */
+	/** @var \Nette\Database\Context */
 	protected $conn;
 
 	/** @var int Current depth of nested transactions */
@@ -20,7 +20,7 @@ class TransactionManager extends \Nette\Object implements \Base\ITransactionMana
 	/** @var int Last commit/rollback operation type */
 	protected $type = self::TYPE_NONE;
 
-	function __construct(\Nette\Database\Connection $conn) {
+	function __construct(\Nette\Database\Context $conn) {
 		$this->conn = $conn;
 	}
 
