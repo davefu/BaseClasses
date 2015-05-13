@@ -16,9 +16,9 @@ class DefaultFormRenderer extends \Nette\Forms\Rendering\DefaultFormRenderer {
 		$this->renderErrors = $renderErrors;
 	}
 
-	public function renderErrors(Nette\Forms\IControl $control = NULL) {
+	public function renderErrors(Nette\Forms\IControl $control = NULL, $own = TRUE) {
 		if ($this->renderErrors) {
-			return parent::renderErrors($control);
+			return parent::renderErrors($control, $own);
 		}
 	}
 

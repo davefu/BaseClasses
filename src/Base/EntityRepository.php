@@ -65,9 +65,8 @@ abstract class EntityRepository extends \Base\Repository {
 		$entity = $this->find($id);
 		if ($entity === false)
 			throw new RepositoryException('Entity ' . $this->getTableName() . ' with ID ' . $id . ' not found!');
-		foreach ($data as $key => $value)
-			$entity->$key = $value;
-		$count = $entity->update();
+		
+		$count = $entity->update($data);
 		if ($count === false)
 			throw new RepositoryException(); // todo:
 		return $entity;

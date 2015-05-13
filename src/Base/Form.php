@@ -46,7 +46,7 @@ class Form extends \Nette\Application\UI\Form {
 	 * Sets form renderer.
 	 * @return self
 	 */
-	public function setRenderer(IFormRenderer $renderer) {
+	public function setRenderer(IFormRenderer $renderer = null) {
 		$this->renderer = $renderer;
 		return $this;
 	}
